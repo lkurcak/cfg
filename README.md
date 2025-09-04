@@ -17,6 +17,7 @@ git config --global push.default current
 # commands
 git config --global alias.s "status -s"
 git config --global alias.l "log --oneline --graph --decorate --all"
+git config --global alias.last "log --oneline --graph --decorate -1 -p"
 ```
 
 |command|action|
