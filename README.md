@@ -1,6 +1,6 @@
 #### configs
 - [git](#git)
-- [nvim](lkurcak/nvim)
+- [nvim](https://github.com/lkurcak/nvim)
 - [tmux](./.tmux.conf)
 
 ---
