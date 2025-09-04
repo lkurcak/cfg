@@ -1,11 +1,7 @@
 #### configs
-- [nvim](#nvim)
 - [git](#git)
-
----
-
-#### nvim
-see [`nvim`](lkurcak/nvim)
+- [nvim](lkurcak/nvim)
+- [tmux](./.tmux.conf)
 
 ---
 
@@ -27,3 +23,4 @@ git config --global alias.l "log --oneline --graph --decorate --all"
 |---|---|
 |s|show status|
 |l|show commit history|
+
