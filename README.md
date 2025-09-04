@@ -17,11 +17,12 @@ git config --global push.default current
 # commands
 git config --global alias.s "status -s"
 git config --global alias.l "log --oneline --graph --decorate --all"
-git config --global alias.last "log --oneline --graph --decorate -1 -p"
+git config --global alias.last "log --oneline --graph --decorate -p -1"
 ```
 
 |command|action|
 |---|---|
 |s|show status|
 |l|show commit history|
+|last|show last commit|
 
