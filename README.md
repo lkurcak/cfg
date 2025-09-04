@@ -22,7 +22,7 @@ git config --global alias.last "log --oneline --graph --decorate -p -1"
 
 |command|action|
 |---|---|
-|s|show status|
-|l|show commit history|
-|last|show last commit|
+|`git s`|show status|
+|`git l`|show commit history|
+|`git last`|show last commit|
 
