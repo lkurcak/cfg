@@ -18,6 +18,8 @@ git config --global push.default current
 git config --global alias.s "status -s"
 git config --global alias.l "log --oneline --graph --decorate --all"
 git config --global alias.last "log --oneline --graph --decorate -p -1"
+git config --global alias.c "commit"
+git config --global alias.co "checkout"
 ```
 
 |command|action|
@@ -25,4 +27,5 @@ git config --global alias.last "log --oneline --graph --decorate -p -1"
 |`git s`|show status|
 |`git l`|show commit history|
 |`git last`|show last commit|
-
+|`git c`|short for commit|
+|`git co`|short for checkout|
