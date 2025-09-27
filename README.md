@@ -1,5 +1,6 @@
 #### configs
 - [git](#git)
+- [nu](#nu)
 - [nvim](https://github.com/lkurcak/nvim)
 - [tmux](./.tmux.conf)
 
@@ -29,3 +30,19 @@ git config --global alias.co "checkout"
 |`git last`|show last commit|
 |`git c`|short for commit|
 |`git co`|short for checkout|
+
+
+#### nu
+
+To edit the config set the editor and type `config nu`:
+```sh
+$env.config.buffer_editor = "nvim"
+config nu
+```
+then paste in:
+```nu
+$env.config.buffer_editor = "nvim"
+$env.config.show_banner = false
+
+alias vi = nvim
+```
