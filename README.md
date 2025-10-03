@@ -43,6 +43,8 @@ then paste in:
 ```nu
 $env.config.buffer_editor = "nvim"
 $env.config.show_banner = false
+$env.config.edit_mode = "vi"
+$env.config.history.file_format = "sqlite"
 
 alias vi = nvim
 ```
