@@ -46,5 +46,15 @@ $env.config.show_banner = false
 $env.config.edit_mode = "vi"
 $env.config.history.file_format = "sqlite"
 
+$env.config.keybindings ++= [
+  {
+    name: "ctrl-h-as-backspace"
+    modifier: control
+    keycode: char_h
+    mode: vi_insert
+    event: { edit: backspace }
+  }
+]
+
 alias vi = nvim
 ```
