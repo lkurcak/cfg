@@ -3,6 +3,7 @@
 - [nu](#nu)
 - [nvim](https://github.com/lkurcak/nvim)
 - [tmux](./.tmux.conf)
+- [zsh](#zsh)
 
 ---
 
@@ -57,4 +58,14 @@ $env.config.keybindings ++= [
 ]
 
 alias vi = nvim
+```
+
+#### zsh
+```
+nvim ~/.zshrc
+```
+```
+export EDITOR="nvim"
+
+alias vi="nvim"
 ```
