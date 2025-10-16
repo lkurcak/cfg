@@ -15,6 +15,7 @@ git config --global core.eol lf
 git config --global core.safecrlf warn
 git config --global init.defaultBranch main
 git config --global push.default current
+git config --global pull.ff only
 
 # commands
 git config --global alias.s "status -s"
