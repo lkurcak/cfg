@@ -69,4 +69,8 @@ nvim ~/.zshrc
 export EDITOR="nvim"
 
 alias vi="nvim"
+
+bindkey -v
+bindkey '^P' history-search-backward
+bindkey '^N' history-search-forward
 ```
