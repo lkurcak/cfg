@@ -23,6 +23,7 @@ git config --global alias.l "log --oneline --graph --decorate --all"
 git config --global alias.last "log --oneline --graph --decorate -p -1"
 git config --global alias.c "commit"
 git config --global alias.co "checkout"
+git config --global alias.b "branch"
 ```
 
 |command|action|
@@ -32,6 +33,7 @@ git config --global alias.co "checkout"
 |`git last`|show last commit|
 |`git c`|short for commit|
 |`git co`|short for checkout|
+|`git b`|short for branch|
 
 
 #### nu
