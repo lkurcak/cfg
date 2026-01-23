@@ -56,7 +56,9 @@ def main [
             $safe_branches | each { print $"    ($in.branch)" }
         } else if $yes or (confirm "Delete these branches?") {
             $safe_branches | each {|row|
-                delete-branch $row.branch false
+                # Use force delete (-D) because git's -d doesn't understand squash merges
+                # We've already verified safety via git cherry
+                delete-branch $row.branch true
             }
         }
     }
