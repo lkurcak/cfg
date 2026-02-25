@@ -35,6 +35,7 @@ git config --global init.defaultBranch main
 git config --global push.default current
 git config --global pull.ff only
 git config --global fetch.prune true
+git config --global core.editor nvim
 ```
 
 #### nu
