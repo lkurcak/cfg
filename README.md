@@ -39,7 +39,7 @@ git config --global core.editor nvim
 ```
 
 <details>
-  <summary>git branchdiff</summary>
+  <summary><code>git branchdiff</code></summary>
   <img width="602" height="92" alt="image" src="https://github.com/user-attachments/assets/077b19eb-2772-49b5-9e4f-67e91d1efde7" />
   <pre><code class="language-sh">git config --global alias.branchdiff '!f() {
     base="${1:-origin/main}"
