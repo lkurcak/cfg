@@ -41,35 +41,7 @@ git config --global core.editor nvim
 <details>
   <summary><code>git branchdiff</code></summary>
   <img width="602" height="92" alt="image" src="https://github.com/user-attachments/assets/077b19eb-2772-49b5-9e4f-67e91d1efde7" />
-  <pre><code class="language-sh">git config --global alias.branchdiff '!bash -c '"'"'
-f() {
-    base="${1:-origin/main}"
-    current=$(git symbolic-ref --short HEAD 2>/dev/null)
-    cap=20
-    max=0
-    while read -r branch; do
-        [ ${#branch} -gt "$max" ] && max=${#branch}
-    done < <(git for-each-ref --sort=refname --format="%(refname:short)" refs/heads/)
-    while read -r branch; do
-        [ "$branch" = "$base" ] && continue
-        read ahead behind < <(git rev-list --left-right --count "$branch"..."$base")
-        alen=$ahead; [ "$alen" -gt "$cap" ] && alen=$cap
-        blen=$behind; [ "$blen" -gt "$cap" ] && blen=$cap
-        abar=$(printf "%${alen}s" "" | tr " " "+")
-        bbar=$(printf "%${blen}s" "" | tr " " "-")
-        [ "$ahead" -gt "$cap" ] && abar="${abar}»"
-        [ "$behind" -gt "$cap" ] && bbar="${bbar}»"
-        padded=$(printf "%-*s" "$max" "$branch")
-        if [ "$branch" = "$current" ]; then
-            marker="* "; name="\033[1;36m${padded}\033[0m"
-        else
-            marker="  "; name="$padded"
-        fi
-        printf "%s%b \033[32m%s\033[0m\033[31m%s\033[0m  (ahead %s, behind %s)\n" "$marker" "$name" "$abar" "$bbar" "$ahead" "$behind"
-    done < <(git for-each-ref --sort=refname --format="%(refname:short)" refs/heads/)
-}
-f "$1"
-'"'"' _'</code></pre>
+  <pre><code class="language-sh">git config --global alias.branchdiff '!f() { base="${1:-origin/main}"; current=$(git symbolic-ref --short HEAD 2>/dev/null); cap=20; max=0; fifo1=$(mktemp -u); mkfifo "$fifo1"; git for-each-ref --sort=refname --format="%(refname:short)" refs/heads/ > "$fifo1" & while read -r branch; do [ ${#branch} -gt "$max" ] && max=${#branch}; done < "$fifo1"; rm -f "$fifo1"; fifo2=$(mktemp -u); mkfifo "$fifo2"; git for-each-ref --sort=refname --format="%(refname:short)" refs/heads/ > "$fifo2" & while read -r branch; do [ "$branch" = "$base" ] && continue; set -- $(git rev-list --left-right --count "$branch"..."$base"); ahead=$1; behind=$2; alen=$ahead; [ "$alen" -gt "$cap" ] && alen=$cap; blen=$behind; [ "$blen" -gt "$cap" ] && blen=$cap; abar=$(printf "%${alen}s" "" | tr " " "+"); bbar=$(printf "%${blen}s" "" | tr " " "-"); [ "$ahead" -gt "$cap" ] && abar="${abar}»"; [ "$behind" -gt "$cap" ] && bbar="${bbar}»"; padded=$(printf "%-*s" "$max" "$branch"); if [ "$branch" = "$current" ]; then marker="* "; name="\033[1;36m${padded}\033[0m"; else marker="  "; name="$padded"; fi; printf "%s%b \033[32m%s\033[0m\033[31m%s\033[0m  (ahead %s, behind %s)\n" "$marker" "$name" "$abar" "$bbar" "$ahead" "$behind"; done < "$fifo2"; rm -f "$fifo2"; }; f "$1"'</code></pre>
 </details>
 
 #### nu
