@@ -41,7 +41,8 @@ git config --global core.editor nvim
 <details>
   <summary><code>git branchdiff</code></summary>
   <img width="602" height="92" alt="image" src="https://github.com/user-attachments/assets/077b19eb-2772-49b5-9e4f-67e91d1efde7" />
-  <pre><code class="language-sh">git config --global alias.branchdiff '!f() {
+  <pre><code class="language-sh">git config --global alias.branchdiff '!bash -c '"'"'
+f() {
     base="${1:-origin/main}"
     current=$(git symbolic-ref --short HEAD 2>/dev/null)
     cap=20
@@ -66,7 +67,9 @@ git config --global core.editor nvim
         fi
         printf "%s%b \033[32m%s\033[0m\033[31m%s\033[0m  (ahead %s, behind %s)\n" "$marker" "$name" "$abar" "$bbar" "$ahead" "$behind"
     done < <(git for-each-ref --sort=refname --format="%(refname:short)" refs/heads/)
-}; f'</code></pre>
+}
+f "$1"
+'"'"' _'</code></pre>
 </details>
 
 #### nu
