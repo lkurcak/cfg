@@ -38,6 +38,37 @@ git config --global fetch.prune true
 git config --global core.editor nvim
 ```
 
+<details>
+  <summary>git branchdiff</summary>
+  <img width="602" height="92" alt="image" src="https://github.com/user-attachments/assets/077b19eb-2772-49b5-9e4f-67e91d1efde7" />
+  <pre><code class="language-sh">git config --global alias.branchdiff '!f() {
+    base="${1:-origin/main}"
+    current=$(git symbolic-ref --short HEAD 2>/dev/null)
+    cap=20
+    max=0
+    while read -r branch; do
+        [ ${#branch} -gt "$max" ] && max=${#branch}
+    done < <(git for-each-ref --sort=refname --format="%(refname:short)" refs/heads/)
+    while read -r branch; do
+        [ "$branch" = "$base" ] && continue
+        read ahead behind < <(git rev-list --left-right --count "$branch"..."$base")
+        alen=$ahead; [ "$alen" -gt "$cap" ] && alen=$cap
+        blen=$behind; [ "$blen" -gt "$cap" ] && blen=$cap
+        abar=$(printf "%${alen}s" "" | tr " " "+")
+        bbar=$(printf "%${blen}s" "" | tr " " "-")
+        [ "$ahead" -gt "$cap" ] && abar="${abar}»"
+        [ "$behind" -gt "$cap" ] && bbar="${bbar}»"
+        padded=$(printf "%-*s" "$max" "$branch")
+        if [ "$branch" = "$current" ]; then
+            marker="* "; name="\033[1;36m${padded}\033[0m"
+        else
+            marker="  "; name="$padded"
+        fi
+        printf "%s%b \033[32m%s\033[0m\033[31m%s\033[0m  (ahead %s, behind %s)\n" "$marker" "$name" "$abar" "$bbar" "$ahead" "$behind"
+    done < <(git for-each-ref --sort=refname --format="%(refname:short)" refs/heads/)
+}; f'</code></pre>
+</details>
+
 #### nu
 
 To edit the config set the editor and type `config nu`:
