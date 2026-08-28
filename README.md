@@ -1,4 +1,5 @@
 #### configs
+- [ghostty](#ghostty)
 - [git](#git)
 - [nu](#nu)
 - [nvim](https://github.com/lkurcak/nvim)
@@ -6,6 +7,13 @@
 - [zsh](#zsh)
 
 ---
+
+#### ghostty
+
+`~/.config/ghostty/config.ghostty`
+```
+theme = Builtin Dark
+```
 
 #### git
 
