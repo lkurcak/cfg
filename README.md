@@ -13,6 +13,8 @@
 `~/.config/ghostty/config.ghostty`
 ```
 theme = Builtin Dark
+cursor-style-blink = false
+shell-integration-features = no-cursor
 ```
 
 #### git
